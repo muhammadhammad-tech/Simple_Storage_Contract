@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./SimpleStorage.sol";
-
+// This contract will override the function store from SimpleStorage and Add 5 to the favorite number
 contract ExtraStorage is SimpleStorage {
     // we want to add +5 
     // override 
