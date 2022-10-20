@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./SimpleStorage.sol";
 
+//keeps tabs of simple storage and create simple storage contract
 contract StorageFactory {
     SimpleStorage[] public simpleStorageArray;
 
