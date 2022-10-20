@@ -1,0 +1,48 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.8; // latest version 0.8.17
+
+contract SimpleStorage { 
+    //types boolean, uint, int, address, bytes
+    uint256 favoriteNumber; //default value is zero
+    // by default variable inside a contract are internal 
+
+    mapping(string => uint256) public nameToFavoriteNumber;
+    
+    //create your own data type
+    struct People{
+        uint256 favoriteNumber;
+        string name;
+    }
+
+    //array
+    // uint256[] public favoriteNumbersList;
+    People[] public people; // dynamic arrray
+    
+
+    function store(uint256 _favoriteNumber) public virtual{ //virtual key word to make the fucntion overrideable
+        favoriteNumber = _favoriteNumber;
+        // retrive(); // if we do this it will cost gas
+    }
+
+// view and pure dont allow modify the state of blockchain
+// pure function dont allow readinng
+// if we call pure function and view function we donnt need to spend any gas
+
+    function retrive() public view returns(uint256){
+        return favoriteNumber;
+    }
+
+    // function to add personn 
+    function addPerson(string memory _name, uint256 _favoriteNumber) public {
+        people.push(People(_favoriteNumber,_name));
+        nameToFavoriteNumber[_name] = _favoriteNumber;
+    }
+
+    //calldata, memory, storage
+    //calldata , memory means that variable will be storing data temprarily
+    //calldata variable can be modified whereas memory cant be
+    // storage variable   permanent variable that can be modified
+    
+
+}
+//0xd9145CCE52D386f254917e481eB44e9943F39138
